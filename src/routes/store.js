@@ -3,25 +3,21 @@ const router = express.Router();
 
 const mysqlConnection = require("../database.js");
 
-// GET all Product
-
+// GET all Product route
 router.get("/api/products", (req, res) => {
-  
-  mysqlConnection.query("SELECT * FROM product", (err, rows,) => {
+    mysqlConnection.query("SELECT * FROM product", (err, rows,) => {
     if (!err) {
       res.json(rows);
     } else {
       console.log(err);
     }
-  });
-  
+  });  
 });
 
-//Query parameters express
-
+// GET filtered products with query params
 router.get("/api/filter", (req, res) => {
     let category = req.query.category;
-
+    //query SQL
    mysqlConnection.query("SELECT * FROM product WHERE category in (" +
     "SELECT id FROM category WHERE name LIKE '%"+category+"%')" , (err, rows, fields) => {
     if (!err) {
@@ -34,9 +30,6 @@ router.get("/api/filter", (req, res) => {
   });
 
 })
-
-
-
 
 // GET all category
 router.get("/api/category", (req, res) => {
