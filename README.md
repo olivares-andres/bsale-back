@@ -1,5 +1,7 @@
 # bsale-back
 backend de test Bsale
+Autor = Andrés Olivares
+correo = andresolivares.se@outlook.com
 
 Proyecto realizado en Node.JS con express y nodemon
 deploy en Heroku
