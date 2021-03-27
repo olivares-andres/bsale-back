@@ -3,6 +3,10 @@ const router = express.Router();
 
 const mysqlConnection = require("../database.js");
 
+router.get("/", (res) => {
+  res.send(<h1>Bsale Test backend on Express JS</h1>)
+})
+
 // GET all Product route
 router.get("/api/products", (req, res) => {
     mysqlConnection.query("SELECT * FROM product", (err, rows,) => {
